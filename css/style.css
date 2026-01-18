@@ -23,7 +23,41 @@ header p{
     font-style: italic;
 }
 
-#reset-canvas{
+#user-custom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#user-num-squares{    
+    border-style: solid;
+    border-color: rgb(190, 213, 255);
+    border-width: 2px;
+    border-radius: 8px;
+
+    padding:8px;
+
+    text-align: center;
+    color: #475879;
+}
+
+#user-num-squares:focus{
+    /* remove default outline */
+    outline: none;
+
+    border-color: transparent;
+    box-shadow: 0px 3px 8px #85b0ffff;;
+}
+
+#user-num-squares::placeholder{
+    color:#475879;
+    font-style: italic;
+    opacity: 70%;
+}
+
+#new-canvas{
     background-color:#6495ed;
     padding: 12px 15px;
     margin-top: 10px;
@@ -32,6 +66,7 @@ header p{
     font-size: 14px;
     border-style: none;
     border-radius: 8px;
+
     /* border-color: #6495ed; */
     /* border-width: 3px; */
 }
@@ -59,8 +94,9 @@ header p{
     border-width: 2px;
     border-radius: 15%;
     border-color: #6495ed;
-    /* set flex-grow on child element */
+    /* set flex-grow and shrink on child element */
     flex-grow: 1;
+    flex-shrink: 1;
     /* force a perfect square ratio width/height of 1:1 */
     aspect-ratio: 1/1;
 }
@@ -74,5 +110,5 @@ header p{
 #grid-square.grid-hover-exit{
     background-color: #cbddff;
     transition: ease-out;
-    transition-duration: 1s;
+    transition-duration: 5s;
 }
