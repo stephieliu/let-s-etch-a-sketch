@@ -24,11 +24,11 @@ header p{
 }
 
 #reset-canvas{
-    background-color:#cbddff;
+    background-color:#6495ed;
     padding: 12px 15px;
     margin-top: 10px;
-    color: #475879;
-    font-weight: 800;
+    color: white;
+    font-weight: 600;
     font-size: 14px;
     border-style: none;
     border-radius: 8px;
@@ -63,4 +63,16 @@ header p{
     flex-grow: 1;
     /* force a perfect square ratio width/height of 1:1 */
     aspect-ratio: 1/1;
+}
+
+#grid-square.grid-hover{
+    background-color: rgba(255, 255, 255, 1);
+    transition: ease-in;
+    transition-duration: 50ms;
+}
+
+#grid-square.grid-hover-exit{
+    background-color: #cbddff;
+    transition: ease-out;
+    transition-duration: 1s;
 }

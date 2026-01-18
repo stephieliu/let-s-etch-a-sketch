@@ -3,6 +3,23 @@ function makeSquares(rowElem){
     let gridElem = document.createElement('div');
     gridElem.setAttribute('id', 'grid-square');
     rowElem.appendChild(gridElem); //add the grid squares to the flex grid row
+    
+    //add event listener for the grid to check when user hovers over a square
+    gridElem.addEventListener('mouseenter', (e) => {
+        //if the mouse is hovering over a grid square element, then apply hover styling
+        //then apply hover entry animation
+        e.target.classList.add('grid-hover');
+        //remove exit styling if it exists
+        if (e.target.classList.contains('grid-hover-exit'))
+            e.target.classList.remove('grid-hover-exit');
+    });
+
+    //add an eventlistener for leaving the squares
+    gridElem.addEventListener('mouseleave', (e) =>{
+        gridElem.classList.add('grid-hover-exit');
+        if(gridElem.classList.contains('grid-hover'))
+            gridElem.classList.remove('grid-hover');
+    });
 }
 
 //function to make new rows of gridboxes to be stacked together, creating the grid
@@ -15,6 +32,7 @@ function makeRow(){
 //create the 16x16 grid of square divs to act as the canvas
 const gridContainer = document.querySelector('#grid-container');
 
+//make the grid
 for (let i = 0; i<16; i++){
     let gridRow = makeRow();
     for(let j = 0; j<16; j++){
@@ -22,3 +40,5 @@ for (let i = 0; i<16; i++){
     }
     gridContainer.appendChild(gridRow);
 }
+
+
