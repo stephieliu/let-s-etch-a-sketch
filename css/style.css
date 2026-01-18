@@ -78,6 +78,7 @@ header p{
     flex-direction: column;
     justify-content: space-around;
     min-height: 50vw;
+    border-radius: 8px;
 }
 
 #grid-row{
@@ -110,5 +111,5 @@ header p{
 #grid-square.grid-hover-exit{
     background-color: #cbddff;
     transition: ease-out;
-    transition-duration: 5s;
+    transition-duration: 10s;
 }

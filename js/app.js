@@ -29,17 +29,23 @@ function makeRow(){
     return rowElem;
 }
 
+//function to make the whole grid given the number of rows and columns (must be equal)
+function makeGrid(num){
+    for (let i = 0; i < num; i++) {
+        let gridRow = makeRow();
+        for (let j = 0; j < num; j++) {
+            makeSquares(gridRow);
+        }
+        gridContainer.appendChild(gridRow);
+    }
+}
+
 //create the 16x16 grid of square divs to act as the canvas
 const gridContainer = document.querySelector('#grid-container');
 
-//make the grid
-for (let i = 0; i<16; i++){
-    let gridRow = makeRow();
-    for(let j = 0; j<16; j++){
-        makeSquares(gridRow);
-    }
-    gridContainer.appendChild(gridRow);
-}
+//make the default grid
+let gridNum = 16; //default value of 16 x 16 grid
+makeGrid(gridNum);
 
 //make reset button to clear the canvas on click
 const resetBtn = document.querySelector('#new-canvas');
@@ -56,6 +62,19 @@ resetBtn.addEventListener('mouseleave', (e)=>{
 const userInput = document.querySelector('#user-num-squares');
 
 userInput.placeholder = 'enter new grid dimensions...';
-// userInput.setAttribute('style', 'color: #cbddff;');
 
-//make the button create a new canvas with user's new dimensions
+//make the button create a new canvas with user's new dimensions uf click detected
+resetBtn.addEventListener('click', (e) =>{
+    //fetch the userInput value
+    //keep the input constrained to 16 - 100 range
+    if(userInput.value && (userInput.value>15 && userInput.value <101)){
+        gridContainer.replaceChildren(); //removes all the children (rows) from the grid
+
+        //make the new grid
+        makeGrid(userInput.value);
+    }
+    else{
+        //warn the user they are not in the correct range
+        alert('Please enter a value between 16 and 100.');
+    }
+});
